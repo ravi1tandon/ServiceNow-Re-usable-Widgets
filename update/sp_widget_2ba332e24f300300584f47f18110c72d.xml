@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <client_script><![CDATA[function (spUtil, $scope) {
+    $scope.items = [{
+        label: 'Point in Time', value: ''
+ }, {
+        label: 'Last 7 Days', value: 7
+ }, {
+        label: 'Last 30 Days', value: 30
+ }];
+
+    $scope.checkstate = {};
+    $scope.toggle = function ($event) {
+
+        var classevent = $event.target.classList;
+        if (classevent.contains('timeevent')) {
+            $event.stopPropagation();
+            $scope.checkstate.isOpen = !$scope.checkstate.isOpen;
+
+        }
+
+    }
+
+
+    $scope.sh = function (service) {
+        //alert(service.value);
+        $scope.data.service = service.value;
+        $scope.service = service;
+        $scope.server.update();
+    }
+  
+	//spUtil.recordWatch($scope, $scope.options.table, $scope.options.query_filter, function (name, data) {
+    spUtil.recordWatch($scope, $scope.options.table, $scope.data.sql, function (name, data) {
+             $scope.server.update();
+            //$scope.options.w_target='false';
+
+
+
+        });
+
+
+
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.dropdown-menu {
+ max-width = 100%; 
+}
+  .horizontal-collapse {
+    height: 70px;
+  }
+  .navbar-collapse.in {
+    overflow-y: hidden;
+  }
+/* Actual Code*/
+.widget-panel {
+    margin-top: 5px;
+    margin-right: 5px;
+    width: 100%;
+  	max-width: 100%;
+    max-height: 100%;
+}
+.widget-data-breached {
+    font-size:50px;
+    margin-bottom: 0px;
+    padding: auto;
+    color: red;
+    text-align: center;
+    width: 100%;
+    max-width: 100%;
+    max-height: 100%
+    
+}
+.widget-data-achieved {
+    font-size: 50px;
+    margin-bottom: 0px;
+    padding: auto;
+    color: green;
+    text-align: center;
+    width: 100%;
+    max-width: 100%;
+}
+.panel-heading {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.sla{
+ font-size:10px; 
+  
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>opsdb</id>
+        <internal>false</internal>
+        <link/>
+        <name>OpsDB</name>
+        <option_schema>[{"hint":"that will work on the filter","name":"table","default_value":"incident","label":"table","type":"string"},{"hint":"Number of Incidents","name":"widget_heading","default_value":"Choose Heading","label":"Widget Heading","type":"string"},{"name":"query_filter","default_value":"priority=1","label":"Query Filter","type":"string"},{"hint":"KPI Target to Compare against current score","name":"target","default_value":"90","label":"Target","type":"integer"},{"name":"kpi_calculation_logic","default_value":"Higher is Good","label":"KPI calculation Logic","type":"choice","choices":[{"label":"Higher is Good","value":"Higher is Good"},{"label":"Lower is Good","value":"Lower is Good"}]},{"hint":"Created refers to Created Date &amp; Updated Refers to Updated Date and will get appended to the query filter","name":"time_event","label":"Time Event","type":"choice","choices":[{"label":"Created","value":"Created"},{"label":"Updated","value":"Updated"}]}]</option_schema>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function () {
+    data.serviceTime = "";
+    if (options.time_event ==
+        "Created") {
+        data.event =
+            "sys_created_on";
+    } else if (options.time_event ==
+        "Updated") {
+        data.event =
+            "sys_updated_on";
+    }
+
+    var recCount = '';
+    if (input && input.service !==
+        "") {
+
+        //data.serviceTime = "^" + data.event + "RELATIVELE@dayofweek@ago@" + input.service;
+        data.serviceTime = "^" +
+            data.event +
+            "ONTime@javascript:gs.daysAgoStart(" +
+            input.service +
+            ")@javascript:gs.daysAgoEnd(0)";
+    }
+
+    if (!data.serviceTime) {
+        data.sql = options.query_filter;
+    } else {
+        data.sql = options.query_filter +
+            data.serviceTime;
+    }
+
+    getData();
+
+    function getData() {
+        var gr = new GlideRecord(
+            options.table);
+        gr.addEncodedQuery(data.sql);
+        gr.query();
+        data.recCount = gr.getRowCount();
+    }
+
+
+
+    //gs.addInfoMessage(options.kpi_calculation_logic);
+    getKPILogic();
+
+    function getKPILogic() {
+
+        if (options.kpi_calculation_logic ==
+            "Lower is Good")
+            if (data.recCount >
+                options.target) {
+                data.slabreach =
+                    "false";
+            } else {
+                data.slabreach =
+                    "true";
+            }
+        if (options.kpi_calculation_logic ==
+            "Higher is Good")
+            if (data.recCount >=
+                options.target) {
+                data.slabreach =
+                    "true";
+            } else {
+                data.slabreach =
+                    "false";
+            }
+    }
+
+
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-08-28 16:30:47</sys_created_on>
+        <sys_id>2ba332e24f300300584f47f18110c72d</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>OpsDB</sys_name>
+        <sys_package display_value="OPS DASHBOARD" source="x_1983_ops_dashboa">ff313aa24f300300584f47f18110c792</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="OPS DASHBOARD">ff313aa24f300300584f47f18110c792</sys_scope>
+        <sys_update_name>sp_widget_2ba332e24f300300584f47f18110c72d</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-08-28 16:49:58</sys_updated_on>
+        <template><![CDATA[<meta name="viewport" content="width=device-width, initial-scale=1">
+<div class="col-xs-4 timeevent-div" ng-click="toggle($event)">
+   <div class="col-xs-6">
+      <div class="dropdown" uib-dropdown is-open="checkstate.isOpen">
+         <a href="#" class="dropdown-toggle" uib-dropdown-toggle>
+         <i class="glyphicon glyphicon-option-vertical"></i>
+         </a>
+         <ul class="dropdown-menu" uib-dropdown-menu="">
+            <li ng-repeat="service in items">
+               <a href="#"><span ng-click="sh(service)">{{service.label}}</span></a>
+            </li>
+         </ul>
+      </div>
+   </div>
+</div>
+<div>{{service.label}}</div>
+<!--Actual Code-->
+<div class="widget-panel col-xs-6">
+   <div class="panel panel-default">
+      <div class="panel-heading text-center">{{options.widget_heading}}
+      </div>
+      <div class="panel-body text-center">
+         <div ng-hide="data.slabreach=='true'">
+            <p class="widget-data-breached" data-toogle="tooltip" data-placement="bottom" title={{data.sql}}>{{data.recCount}}</p>
+         </div>
+         <div ng-hide="data.slabreach=='false'">
+            <p class="widget-data-achieved" data-toogle="tooltip" data-placement="bottom" title={{data.sql}}>{{data.recCount}}</p>
+         </div>
+         <!--br/-->
+         <p class="widget-data">
+            <label class="label label-info">
+               Target :{{options.target}}
+         <p class="sla">
+         <label>{{options.kpi_calculation_logic}}</label>
+         </p>
+         </label>
+        </p>
+        
+      </div>
+   </div>
+</div>
+]]></template>
+    </sp_widget>
+</record_update>

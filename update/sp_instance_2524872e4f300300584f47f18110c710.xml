@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sp_instance">
+    <sp_instance action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <class_name/>
+        <color>default</color>
+        <css/>
+        <glyph/>
+        <id/>
+        <order>0</order>
+        <roles/>
+        <short_description/>
+        <size>md</size>
+        <sp_column display_value="1">e2148f2e4f300300584f47f18110c72c</sp_column>
+        <sp_widget display_value="Welcome">e342cfea4f300300584f47f18110c7b6</sp_widget>
+        <sys_class_name>sp_instance</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-08-28 17:42:45</sys_created_on>
+        <sys_id>2524872e4f300300584f47f18110c710</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="OPS DASHBOARD" source="x_1983_ops_dashboa">ff313aa24f300300584f47f18110c792</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="OPS DASHBOARD">ff313aa24f300300584f47f18110c792</sys_scope>
+        <sys_update_name>sp_instance_2524872e4f300300584f47f18110c710</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-08-28 17:58:07</sys_updated_on>
+        <title/>
+        <url/>
+        <widget_parameters><![CDATA[{
+	"company": {
+		"value": "Prologis Operations Dashboard",
+		"displayValue": "Prologis Operations Dashboard"
+	}
+}]]></widget_parameters>
+    </sp_instance>
+    <sys_translated_text action="delete_multiple" query="documentkey=2524872e4f300300584f47f18110c710"/>
+</record_update>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sp_row">
+    <sp_row action="INSERT_OR_UPDATE">
+        <class_name/>
+        <order>1</order>
+        <sp_column/>
+        <sp_container display_value="Operations Dashboard - Container 1">02b67aa64f300300584f47f18110c7c7</sp_container>
+        <sys_class_name>sp_row</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-08-28 17:42:32</sys_created_on>
+        <sys_id>2e148f2e4f300300584f47f18110c72a</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>1</sys_name>
+        <sys_package display_value="OPS DASHBOARD" source="x_1983_ops_dashboa">ff313aa24f300300584f47f18110c792</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="OPS DASHBOARD">ff313aa24f300300584f47f18110c792</sys_scope>
+        <sys_update_name>sp_row_2e148f2e4f300300584f47f18110c72a</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-08-28 17:42:32</sys_updated_on>
+    </sp_row>
+</record_update>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sp_page">
+    <sp_page action="INSERT_OR_UPDATE">
+        <css/>
+        <draft>false</draft>
+        <id>ops_db</id>
+        <internal>false</internal>
+        <public>false</public>
+        <roles/>
+        <short_description/>
+        <sys_class_name>sp_page</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-08-28 16:44:04</sys_created_on>
+        <sys_id>4eb67aa64f300300584f47f18110c7c4</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>ops_db</sys_name>
+        <sys_package display_value="OPS DASHBOARD" source="x_1983_ops_dashboa">ff313aa24f300300584f47f18110c792</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="OPS DASHBOARD">ff313aa24f300300584f47f18110c792</sys_scope>
+        <sys_update_name>sp_page_4eb67aa64f300300584f47f18110c7c4</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-08-28 16:44:04</sys_updated_on>
+        <title>Operations Dashboard</title>
+    </sp_page>
+    <sys_translated_text action="delete_multiple" query="documentkey=4eb67aa64f300300584f47f18110c7c4"/>
+</record_update>
